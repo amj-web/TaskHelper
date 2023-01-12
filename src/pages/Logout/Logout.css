@@ -1,0 +1,8 @@
+.logout-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #35bd13;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
