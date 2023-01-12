@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ToDoForm from "../../components/ToDoForm/ToDoForm"
 import "./ToDo.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,9 +12,6 @@ const Update = () => {
   const userData = JSON.parse(localStorage.getItem('user'))
   const [loader, setLoader] = useState(true)
   const location = useLocation();
-  // const formData = location.state;
-  // console.log("The Location is in update",location)
-  // console.log("The User Data is", userData)
   const history = useHistory()
   useEffect(() => {
     if (userData != null) {
@@ -31,8 +27,7 @@ const Update = () => {
       fetch(`${URL}/api/auth/check/`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          // console.log(result)
-          if (result.detail != undefined) {
+          if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
               history.push('/login')
@@ -56,7 +51,7 @@ const Update = () => {
         history.push('/login')
       }, 500)
     }
-  }, [])
+  })
 
 
   return (

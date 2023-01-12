@@ -11,6 +11,7 @@ import Docs from "./pages/Docs/Docs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import Update from "./pages/Update/Update";
+import ViewTask from "./pages/ViewTask/ViewTask";
 
 const App = () => {
     const userData = JSON.parse(localStorage.getItem('user'))
@@ -34,6 +35,7 @@ const App = () => {
                     <Route path="/categories" component={Category} />
                     <Route path="/todo" component={Todo} />
                     <Route path="/update" component={Update} />
+                    <Route path="/viewTask" exact component={ViewTask} />
                     <Route path="/docs" component={Docs} />
                     <Route path="/signUp" component={Signup} />
                     <Route path="/logout" exact component={LogOut} />

@@ -36,7 +36,8 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      const [loader, setLoader] = useState(false)
      const currentURL = window.location.href.split('/')[3]
      // console.log("The Current Url is", currentURL)
-
+     const today = new Date();
+     const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
      useEffect(() => {
           var myHeaders = new Headers();
           myHeaders.append("Authorization", `Bearer ${userData.token}`);
@@ -92,85 +93,7 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                .catch(error => console.log('error', error));
 
      }, [])
-
-
-     //   console.log("The Select Catagory is::", selectCatagory)
-     const handleSubmitBtn = () => {
-
-          // console.log("Here is Data",
-          //   {
-          //     Title: title,
-          //     Description: description,
-          //     Image: image,
-          //     DueDate: dueDate,
-          //     TaskOwner: selectTaskOwner,
-          //     Catagory: selectCatagory,
-          //     Priority: priority,
-          //     Status: status
-          //   }
-          // )
-          if (catagory.length == 0) {
-               toast.error("Please add Catagory First!", { position: "bottom-right" })
-               setTimeout(() => {
-                    history.push('/categories')
-               }, 2000)
-               return
-          }
-          if (!title || !description || !image || !dueDate || !selectCatagory || !selectCatagory || !priority || !status) {
-               toast.error("Please fill all the fields!", { position: "bottom-right" })
-               return
-          }
-          setLoader(true)
-          //Post Api
-          var myHeaders = new Headers();
-          myHeaders.append("Authorization", `Bearer ${userData.token}`);
-
-          var formdata = new FormData();
-          formdata.append("category", selectCatagory);
-          formdata.append("title", title);
-          formdata.append("description", description);
-          formdata.append("user", userData.id);
-          formdata.append("dueDate", dueDate);
-          formdata.append("image", image);
-          formdata.append("assigned", selectTaskOwner);
-          formdata.append("priority", priority);
-
-          var requestOptions = {
-               method: 'POST',
-               headers: myHeaders,
-               body: formdata,
-               redirect: 'follow'
-          };
-
-          fetch(`${URL}/api/todo/create-todo/`, requestOptions)
-               .then(response => response.json())
-               .then(result => {
-                    // console.log("The Result is----->", result)
-                    toast.success("Task Add Successfully!", { position: "bottom-right" })
-                    setLoader(false)
-               })
-               .catch(error => console.log('error', error));
-          if (buttonName === "SAVE") {
-               let d = "none";
-               setDisplayy(d);
-               setUDisplayy(d);
-          }
-     };
-
      const handleUpdateFunction = () => {
-          // console.log("This is Image",image)
-          console.log("Here is Data",
-               {
-                    Title: title,
-                    Description: description,
-                    Image: image,
-                    DueDate: dueDate,
-                    TaskOwner: selectTaskOwner,
-                    Catagory: selectCatagory.id,
-                    Priority: priority,
-                    Status: status
-               }
-          )
 
           if (catagory.length == 0) {
                toast.error("Please add Catagory First!", { position: "bottom-right" })
@@ -180,16 +103,10 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                return
           }
 
-          if (!title || !description || !image || !dueDate || !selectCatagory || !selectCatagory || !priority || !status) {
-               toast.error("Please fill all the fields!", { position: "bottom-right" })
+          if (!title || !description || !dueDate || !selectCatagory) {
+               toast.error("Please fill required fields!", { position: "bottom-right" })
                return
           }
-          if (image == Data.Data.image) {
-               setImage(null)
-               toast.error("Please select updated image", { position: "bottom-right" })
-               return
-          }
-          // console.log("The Select Catagory is:", selectCatagory)
           setLoader(true)
           //Update the  Task
 
@@ -202,9 +119,18 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
           formdata.append("description", description);
           formdata.append("user", userData.id);
           formdata.append("dueDate", dueDate);
-          formdata.append("image", image);
-          formdata.append("assigned", selectTaskOwner);
-          formdata.append("priority", priority);
+          if (image !== Data.Data.image) {
+               formdata.append("image", image);
+          }
+          if (selectTaskOwner !== undefined) {
+               formdata.append("assigned", selectTaskOwner);
+          }
+          if (status !== undefined) {
+               formdata.append("status", status)
+          }
+          if (priority !== undefined) {
+               formdata.append("priority", priority);
+          }
 
           var requestOptions = {
                method: 'PUT',
@@ -223,9 +149,7 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                          }
                     }
                     else {
-                         console.log("The Result is----->", result)
                          toast.success("Task Update Successfully!", { position: "bottom-right" })
-                         // setLoader(false)
                          setTimeout(() => {
                               history.push('/')
                          }, 1500)
@@ -238,27 +162,22 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      const handleCancel = () => {
           history.push("/")
      }
-     //   console.log("The Current URL is",currentURL)
      return (
           <>
                {
                     !loader ?
                          <Form className="m-4">
                               <Form.Group className="mb-3" controlId="taskTitle">
-                                   <Form.Label className="text-success">Title</Form.Label>
+                                   <Form.Label className="text-success">Title<span style={{ color: "red", marginLeft: "0.2em" }}>*</span></Form.Label>
                                    <Form.Control
                                         type="text"
                                         value={title}
                                         placeholder="Develop a Todos list website."
                                         onChange={(e) => setTitle(e.target.value)}
                                    />
-                                   {/* <Form.Text className="text-muted">
-                Main topic assign in your task.
-              </Form.Text> */}
                               </Form.Group>
-
                               <Form.Group className="mb-3" controlId="taskDescription">
-                                   <Form.Label className="text-success">Description</Form.Label>
+                                   <Form.Label className="text-success">Description<span style={{ color: "red", marginLeft: "0.2em" }}>*</span></Form.Label>
                                    <Form.Control
                                         as="textarea"
                                         rows={3}
@@ -275,8 +194,8 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                                    </Form.Group>
 
                                    <Form.Group controlId="duedate" className="w-100 mb-3">
-                                        <Form.Label className="text-success">Set Due Date</Form.Label>
-                                        <Form.Control type="date" name="duedate" placeholder="Due date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+                                        <Form.Label className="text-success">Set Due Date<span style={{ color: "red", marginLeft: "0.2em" }}>*</span></Form.Label>
+                                        <Form.Control type="date" name="duedate" placeholder="Due date" value={dueDate} min={minDate} onChange={(e) => setDueDate(e.target.value)} />
                                    </Form.Group>
                               </div>
 
@@ -292,27 +211,18 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                                              className="bg-light text-dark multi-select-box"
                                              closeIcon={"cancel"}
                                         />
-                                        {/* <Form.Select onChange={(e) => setSelectTaskOwner(e.target.value)}>
-
-                                             <>
-                                                  <option selected disabled>Select Owner</option>
-                                                  {
-                                                       taskOwner.map(ls => (
-                                                            <option value={ls.id}>{ls.username}</option>
-                                                       ))
-                                                  }
-                                             </>
-                                        </Form.Select> */}
-
                                    </Form.Group>
                                    <Form.Group controlId="taskCategorySelect" className="w-100 mb-3">
-                                        <Form.Label className="text-success">Category</Form.Label>
+                                        <Form.Label className="text-success">Category<span style={{ color: "red", marginLeft: "0.2em" }}>*</span></Form.Label>
                                         <Form.Select onChange={(e) => setSelectCatagory(e.target.value)} value={selectCatagory} >
                                              <>
                                                   <option disabled selected>Select Catagory</option>
                                                   {
-                                                       catagory?.map(ls => (
-                                                            <option value={ls.id}>{ls.name}</option>
+                                                       catagory?.map((ls, index) => (
+                                   
+                                                            <option key={index} value={ls.id}>{ls.name}</option>
+
+                                                          
                                                        ))
                                                   }
                                              </>

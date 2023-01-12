@@ -17,11 +17,16 @@ const Signup = () => {
   const history = useHistory()
   const handleSignup = (e) => {
     setLoader(true)
+    // console.log("The passowrd is",password.length)
     e.preventDefault()
-    // console.log("These are the States", name, email, password, confirmPassword)
     if(!name || !email || !password || !confirmPassword ){
       setLoader(false)
       toast.error("Please fill all the fields!",{position:"bottom-right"})
+      return
+    }
+    if(password.length<6){
+      toast.error("The minimum length of password should be 6",{position:"bottom-right"})
+      setLoader(false)
       return
     }
     if(password!=confirmPassword){
@@ -49,7 +54,6 @@ const Signup = () => {
     fetch(`${URL}/api/auth/register/`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        // console.log(result)
         if(typeof(result.username)=="object" || typeof(result.email)=="object"){
           if(result.username!=undefined){
             toast.error(result.username[0],{position:"bottom-right"})
@@ -60,7 +64,6 @@ const Signup = () => {
           setLoader(false)
         }
         else{
-          // setLoader(false)
           setTimeout(() => {
             history.push('/login')
           }, 1000)

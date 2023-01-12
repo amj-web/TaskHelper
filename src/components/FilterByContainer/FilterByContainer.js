@@ -98,8 +98,8 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
               <>
                 <option value="ALL" selected>All</option>
                 {
-                  catagory.map(ls => (
-                    <option value={ls.id}>{ls.name}</option>
+                  catagory.map((ls,index) => (
+                    <option key={index} value={ls.id}>{ls.name}</option>
                   ))
                 }
               </>

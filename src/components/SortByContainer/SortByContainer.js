@@ -20,7 +20,7 @@ const SortByContainer = ({data, setFilterToggle, setfilterData,setData}) => {
   }
   const handleSorting = (e) => {
     if (e.target.value == "Ascending") {
-      console.log("The Data in Ascend",data)
+      // console.log("The Data in Ascend",data)
       data.sort((a, b) => {
         const dateA = new Date(a.dueDate);
         const dateB = new Date(b.dueDate);

@@ -6,18 +6,9 @@ import { URL } from "../../globalUrl";
 import { toast, ToastContainer } from "react-toastify";
 import Loader from "../Loader/Loader";
 import { useHistory } from 'react-router-dom'
-const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
+const ToDoForm = ({ buttonName, setDisplayy,
   setUDisplayy }) => {
   const userData = JSON.parse(localStorage.getItem('user'))
-  const objectArray = [
-    { key: "Option 1", cat: "Group 1" },
-    { key: "Option 2", cat: "Group 1" },
-    { key: "Option 3", cat: "Group 1" },
-    { key: "Option 4", cat: "Group 2" },
-    { key: "Option 5", cat: "Group 2" },
-    { key: "Option 6", cat: "Group 2" },
-    { key: "Option 7", cat: "Group 2" },
-  ];
   const history = useHistory()
   const [title, setTitle] = useState()
   const [description, setDescription] = useState()
@@ -31,8 +22,8 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
   const [status, setStatus] = useState()
   const [loader, setLoader] = useState(false)
   const currentURL = window.location.href.split('/')[3]
-  // console.log("The Current Url is", currentURL)
-
+  const today = new Date();
+  const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   useEffect(() => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${userData.token}`);
@@ -46,7 +37,6 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
     fetch(`${URL}/api/todo/user-category/`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        // console.log(result)
         if (result.message == "User dont have any category") {
           setCatagory([])
         }
@@ -69,10 +59,9 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
     fetch(`${URL}/api/auth/user/`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        // console.log(result)
-        var arr=[]
-        result.map(ls=>{
-          var obj ={key:ls.id,cat:ls.username}
+        var arr = []
+        result.map(ls => {
+          var obj = { key: ls.id, cat: ls.username }
           arr.push(obj)
         })
         setTaskOwner(arr)
@@ -82,9 +71,7 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
 
   }, [])
 
-  // console.log("The Catagory is", taskOwner)
   const handleSubmitBtn = () => {
-
     // console.log("Here is Data",
     //   {
     //     Title: title,
@@ -104,8 +91,8 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
       }, 1500)
       return
     }
-    if (!title || !description || !image || !dueDate || !selectCatagory || !selectCatagory || !priority || !status) {
-      toast.error("Please fill all the fields!", { position: "bottom-right" })
+    if (!title || !description || !dueDate || !selectCatagory) {
+      toast.error("Please fill the required fields!", { position: "bottom-right" })
       return
     }
     setLoader(true)
@@ -114,15 +101,24 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
     myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
     var formdata = new FormData();
+  
     formdata.append("category", selectCatagory);
     formdata.append("title", title);
     formdata.append("description", description);
     formdata.append("user", userData.id);
     formdata.append("dueDate", dueDate);
-    formdata.append("image", image);
-    formdata.append("assigned", selectTaskOwner);
-    formdata.append("priority", priority);
-
+    if (image !== undefined) {
+      formdata.append("image", image);
+    }
+    if (selectTaskOwner!==undefined) {
+      formdata.append("assigned", selectTaskOwner);
+    }
+    if(status !==undefined){
+      formdata.append("status",status)
+    }
+    if (priority!==undefined) {
+      formdata.append("priority", priority);
+    }
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -133,21 +129,20 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
     fetch(`${URL}/api/todo/create-todo/`, requestOptions)
       .then(response => response.json())
       .then(result => {
+        // console.log("The Result is", result)
         if (typeof (result.title) == "object") {
           if (result.title != undefined) {
             toast.error(result.title[0], { position: "bottom-right" })
             setLoader(false)
           }
         }
-        // console.log("The Result is----->", result)
-        else{
+        else {
           toast.success("Task Add Successfully!", { position: "bottom-right" })
           setTimeout(() => {
             history.push('/')
           }, 1000)
-          // setLoader(false)
         }
-       
+
       })
       .catch(error => console.log('error', error));
     if (buttonName === "SAVE") {
@@ -156,78 +151,23 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
       setUDisplayy(d);
     }
   };
-
-  const handleUpdateFunction = () => {
-    // console.log("----This Error----")
-    // if (buttonName === "SAVE") {
-    // //   let d = "none";
-    // //   setDisplayy(d);
-    // //   setUDisplayy(d);
-    // // }
-    if (catagory.length == 0) {
-      toast.error("Please add Catagory First!", { position: "bottom-right" })
-      setTimeout(() => {
-        history.push('/categories')
-      }, 2000)
-      return
-    }
-    if (!title || !description || !image || !dueDate || !selectCatagory || !selectCatagory || !priority || !status) {
-      toast.error("Please fill all the fields!", { position: "bottom-right" })
-      return
-    }
-    setLoader(true)
-    //Update the  Task
-
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${userData.token}`);
-
-    var formdata = new FormData();
-    formdata.append("category", selectCatagory);
-    formdata.append("title", title);
-    formdata.append("description", description);
-    formdata.append("user", userData.id);
-    formdata.append("dueDate", dueDate);
-    formdata.append("image", image);
-    formdata.append("assigned", selectTaskOwner);
-    formdata.append("priority", priority);
-
-    var requestOptions = {
-      method: 'PUT',
-      headers: myHeaders,
-      body: formdata,
-      redirect: 'follow'
-    };
-
-    fetch(`${URL}/api/todo/unique-todo/${updateTaskId}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        // console.log("The Result is----->", result)
-        toast.success("Task Update Successfully!", { position: "bottom-right" })
-        setLoader(false)
-      })
-      .catch(error => console.log('error', error));
-
-  }
-  console.log("This is Task owner",taskOwner)
   return (
     <>
       {
         !loader ?
           <Form className="m-4">
             <Form.Group className="mb-3" controlId="taskTitle">
-              <Form.Label className="text-success">Title</Form.Label>
+              <Form.Label className="text-success">Title<span style={{ color: "red", marginLeft: "0.2em" }}>*</span></Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Develop a Todos list website."
                 onChange={(e) => setTitle(e.target.value)}
               />
-              {/* <Form.Text className="text-muted">
-                Main topic assign in your task.
-              </Form.Text> */}
+
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="taskDescription">
-              <Form.Label className="text-success">Description</Form.Label>
+              <Form.Label className="text-success">Description<span style={{ color: "red", marginLeft: "0.1em" }}>*</span></Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -243,8 +183,8 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
               </Form.Group>
 
               <Form.Group controlId="duedate" className="w-100 mb-3">
-                <Form.Label className="text-success">Set Due Date</Form.Label>
-                <Form.Control type="date" name="duedate" placeholder="Due date" onChange={(e) => setDueDate(e.target.value)} />
+                <Form.Label className="text-success">Set Due Date<span style={{ color: "red", marginLeft: "0.1em" }}>*</span></Form.Label>
+                <Form.Control type="date" name="duedate" min={minDate} placeholder="Due date" onChange={(e) => setDueDate(e.target.value)} />
               </Form.Group>
             </div>
 
@@ -255,32 +195,20 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
               >
                 <Form.Label className="text-success">Task Owners</Form.Label>
                 <Multiselect
-              options={taskOwner}
-              displayValue="cat"
-              className="bg-light text-dark multi-select-box"
-              closeIcon={"cancel"}
-            />
-                {/* <Form.Select onChange={(e) => setSelectTaskOwner(e.target.value)}>
-
-                  <>
-                    <option selected disabled>Select Owner</option>
-                    {
-                      taskOwner.map(ls => (
-                        <option value={ls.id}>{ls.username}</option>
-                      ))
-                    }
-                  </>
-                </Form.Select> */}
-
+                  options={taskOwner}
+                  displayValue="cat"
+                  className="bg-light text-dark multi-select-box"
+                  closeIcon={"cancel"}
+                />
               </Form.Group>
               <Form.Group controlId="taskCategorySelect" className="w-100 mb-3">
-                <Form.Label className="text-success">Category</Form.Label>
+                <Form.Label className="text-success">Category<span style={{ color: "red", marginLeft: "0.1em" }}>*</span></Form.Label>
                 <Form.Select onChange={(e) => setSelectCatagory(e.target.value)}>
                   <>
                     <option disabled selected>Select Catagory</option>
                     {
-                      catagory?.map(ls => (
-                        <option value={ls.id}>{ls.name}</option>
+                      catagory?.map((ls,index) => (
+                        <option key={index} value={ls.id}>{ls.name}</option>
                       ))
                     }
                   </>
@@ -317,7 +245,7 @@ const ToDoForm = ({ buttonName, setDisplayy, updateTaskId,
               <Button
                 variant="success"
                 className="submit-btn"
-                onClick={!currentURL ? handleUpdateFunction : handleSubmitBtn}
+                onClick={handleSubmitBtn}
               >
                 Submit
               </Button>

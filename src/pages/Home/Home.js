@@ -139,8 +139,8 @@ const Home = () => {
                     {
                       data.length == 0 ? <center><h3>Hurrah! there is no task to be Completed</h3></center>
                         :
-                        data?.map(ls => (
-                          <Task
+                        data?.map((ls,index) => (
+                          <Task key={index}
                             setDisplayy={setDisplayy}
                             setUDisplayy={setUDisplayy}
                             setVDisplayy={setVDisplayy}
@@ -153,14 +153,16 @@ const Home = () => {
                             setcatagoryOwner={setcatagoryOwner}
                             catagoryOwner={catagoryOwner}
                             setuserOwner={setuserOwner}
+                            userOwner={userOwner}
                           />
                         ))
                     }
                   </>
                   :
 
-                  filterData?.map(ls => (
+                  filterData?.map((ls,index) => (
                     <Task
+                      key={index}
                       setDisplayy={setDisplayy}
                       setUDisplayy={setUDisplayy}
                       setVDisplayy={setVDisplayy}
@@ -173,6 +175,7 @@ const Home = () => {
                       setcatagoryOwner={setcatagoryOwner}
                       catagoryOwner={catagoryOwner}
                       setuserOwner={setuserOwner}
+                      userOwner={userOwner}
                     />
                   ))
 

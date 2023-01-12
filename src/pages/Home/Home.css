@@ -61,6 +61,10 @@
  
 } */
 
+.task-img{
+    height: 200px;
+}
+
 .task-btns {
     display: flex;
     justify-content: flex-end;
@@ -197,6 +201,10 @@
 
     .update-task-heading {
         font-size: 30px;
+    }
+
+    .task-img{
+        height: 300px;
     }
 
 }

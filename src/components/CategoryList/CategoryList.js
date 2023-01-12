@@ -53,19 +53,19 @@ const CategoriesList = ({ _id, category, CategoriesList, setCategoriesList, dele
     return (
         <React.Fragment>
 
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+            <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLongTitle">Confirmation</h5>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             Are you sure to delete that catagory?
                             It will also delete tasks that are related to it!
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick={() => deleteHandler(category)} >Yes</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => deleteHandler(category)} >Yes</button>
                         </div>
                     </div>
                 </div>

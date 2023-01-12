@@ -246,8 +246,9 @@ const Category = () => {
             <div className="categories-list-container w-100 my-4 mx-auto d-flex justify-content-center flex-column">
               {
                 (CategoriesList.length != 0) ?
-                  CategoriesList?.map((category) => (
+                  CategoriesList?.map((category,index) => (
                     <CategoryList
+                      key={index}
                       _id={category._id}
                       category={category}
                       CategoriesList={CategoriesList}

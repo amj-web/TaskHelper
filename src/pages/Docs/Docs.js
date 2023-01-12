@@ -1,11 +1,11 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import "./Docs.css";
 const Docs = () => {
   useEffect(() => {
     initDocs();
-  
-      }, [])
-  
+
+  }, [])
+
 
   const initDocs = () => {
     const docsMenu = document.getElementById("docs-menu");
@@ -119,7 +119,7 @@ const Docs = () => {
                 <header>Introduction</header>
                 <article>
                   <p>
-                    JavaScript is a cross-platform, object-oriented scripting
+                   JavaScript is a cross-platform, object-oriented scripting
                     language. It is a small and lightweight language. Inside a
                     host environment (for example, a web browser), JavaScript
                     can be connected to the objects of its environment to
@@ -191,14 +191,14 @@ const Docs = () => {
                   <p>
                     JavaScript and Java are similar in some ways but
                     fundamentally different in some others. The JavaScript
-                    language resembles Java but does not have Java's static
+                    language resembles Java but does not have Java&apos;s static
                     typing and strong type checking. JavaScript follows most
                     Java expression syntax, naming conventions and basic
                     control-flow constructs which was the reason why it was
                     renamed from LiveScript to JavaScript.
                   </p>
                   <p>
-                    In contrast to Java's compile-time system of classes built
+                    In contrast to Java&apos;s compile-time system of classes built
                     by declarations, JavaScript supports a runtime system based
                     on a small number of data types representing numeric,
                     Boolean, and string values. JavaScript has a prototype-based
@@ -224,7 +224,7 @@ const Docs = () => {
                 <header>Hello world</header>
                 <article>
                   To get started with writing JavaScript, open the Scratchpad
-                  and write your first "Hello world" JavaScript code:
+                  and write your first &quot;Hello world&quot; JavaScript code:
                   <code>function greetMe(yourName)</code>
                   Select the code in the pad and hit Ctrl+R to watch it unfold
                   in your browser!
@@ -241,8 +241,8 @@ const Docs = () => {
                   A JavaScript identifier must start with a letter, underscore
                   (_), or dollar sign ($); subsequent characters can also be
                   digits (0-9). Because JavaScript is case sensitive, letters
-                  include the characters "A" through "Z" (uppercase) and the
-                  characters "a" through "z" (lowercase).
+                  include the characters &quot;A&quot; through &quot;Z&quot; (uppercase) and the
+                  characters &quot;a&quot; through &quot;z&quot; (lowercase).
                 </p>
                 <p>
                   You can use ISO 8859-1 or Unicode letters such as å and ü in
@@ -263,7 +263,7 @@ const Docs = () => {
                   <p>
                     By simply assigning it a value. For example,{" "}
                     <code>x = 42.</code> This always declares a global variable.
-                    It generates a strict JavaScript warning. You shouldn't use
+                    It generates a strict JavaScript warning. You shouldn&apos;t use
                     this variant.
                   </p>
                   <p>

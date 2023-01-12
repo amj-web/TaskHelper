@@ -1,0 +1,6 @@
+.view-task-container {
+    max-width: 1024px;
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    background-color: #fff;
+}
