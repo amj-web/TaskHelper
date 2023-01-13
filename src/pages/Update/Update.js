@@ -61,7 +61,7 @@ const Update = () => {
           <div className="todo-page w-100 px-3 py-4">
             <div className="todo-container w-100 py-4 pb-2 mx-auto">
               <h1 className="text-success text-center  add-task-heading">
-                Create New Task Here!
+                Update your Task
               </h1>
               <UpdateForm buttonName="Add Task" Data={location.state}/>
             </div>

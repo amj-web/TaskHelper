@@ -21,7 +21,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
       .then(response => response.json())
       .then(result => {
         // console.log(result)
-        if (result.message == "User dont have any category") {
+        if (result.message === "User dont have any category") {
           setcatagory([])
         }
         else {
@@ -32,7 +32,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
       .catch(error => console.log('error', error));
   }, [])
   const handlePriorityfilter = (e) => {
-    if (e.target.value == "ALL") {
+    if (e.target.value === "ALL") {
       setFilterToggle(false)
       // setfilterData(data)
     }
@@ -40,7 +40,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
       setFilterToggle(true)
       setFilterValue(e.target.value)
       setfilterData(data.filter(ls => {
-        if (ls.priority == e.target.value) {
+        if (ls.priority === e.target.value) {
           return ls
         }
       }))
@@ -49,7 +49,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
   }
 
   const handleStatusfilter=(e) =>{
-    if (e.target.value == "ALL") {
+    if (e.target.value === "ALL") {
       setFilterToggle(false)
       // setfilterData(data)
     }
@@ -57,7 +57,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
       setFilterToggle(true)
       setFilterValue(e.target.value)
       setfilterData(data.filter(ls => {
-        if (ls.status == e.target.value) {
+        if (ls.status === e.target.value) {
           return ls
         }
       }))
@@ -66,7 +66,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
 
   const handleCatagoryFilter =(e) =>{
     
-    if (e.target.value == "ALL") {
+    if (e.target.value === "ALL") {
       setFilterToggle(false)
       // setfilterData(data)
     }
@@ -74,7 +74,7 @@ const FilterByContainer = ({ setData, data, setFilterToggle, setfilterData }) =>
       setFilterToggle(true)
       setFilterValue(e.target.value)
       setfilterData(data.filter(ls => {
-        if (ls.category == e.target.value) {
+        if (ls.category === e.target.value) {
           return ls
         }
       }))

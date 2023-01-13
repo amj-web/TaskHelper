@@ -26,7 +26,7 @@ const Home = () => {
   const [userOwner, setuserOwner] = useState()
 
   useEffect(() => {
-    if (userData != null) {
+    if (userData !== null) {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -40,7 +40,7 @@ const Home = () => {
         .then(response => response.json())
         .then(result => {
           // console.log(result)
-          if (result.detail != undefined) {
+          if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
               history.push('/login')
@@ -66,7 +66,7 @@ const Home = () => {
         history.push('/login')
       }, 1000)
     }
-    if (userData != null) {
+    if (userData !== null) {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -87,7 +87,7 @@ const Home = () => {
           //   setData(result)
           //   setLoader(false)
           // }
-          if (result.message != undefined) {
+          if (result.message !== undefined) {
             if (result.message == "User dont have any todo") {
               setData([])
             }
@@ -104,7 +104,7 @@ const Home = () => {
   }, []);
   const handleFilter = (id) => {
     setData(data?.filter(ls => {
-      if (ls.id != id) {
+      if (ls.id !== id) {
         return ls
       }
     }))
@@ -137,7 +137,7 @@ const Home = () => {
                 !filterToggle ?
                   <>
                     {
-                      data.length == 0 ? <center><h3>Hurrah! there is no task to be Completed</h3></center>
+                      data.length == 0 ? <center><h3>Hurray there are no tasks to be completed</h3></center>
                         :
                         data?.map((ls,index) => (
                           <Task key={index}

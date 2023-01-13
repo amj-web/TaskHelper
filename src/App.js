@@ -18,7 +18,7 @@ const App = () => {
     const [isLogin, setIsLogin] = useState()
     useEffect(() => {
         // console.log("This is user Data",userData)
-        if (userData == null) {
+        if (userData === null) {
             setIsLogin(false)
           } else {
             setIsLogin(true)

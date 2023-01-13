@@ -1,15 +1,19 @@
-import React, { useRef } from "react";
-import fileDownload from 'react-file-download';
+import React, { useRef ,useState} from "react";
+import { saveAs } from "file-saver";
 import { NavLink as Link } from "react-router-dom";
 import "./ViewTask.css";
 const ViewTaskCom = ({
   Data, catagory, Assigned
 }) => {
+
   const imageRef = useRef(null);
-  const handleDownload = (url) => {
-    const imageUrl = url;
-    fileDownload(imageUrl, 'image.jpg');
+  const [imageUrl, setImageUrl] = useState(Data?.image);
+  function handleDownload() {
+   
+    saveAs(imageUrl)
   }
+ 
+  console.log("The Data is",Data)
   return (
     <div >
       <div className="m-4">
@@ -45,7 +49,7 @@ const ViewTaskCom = ({
         <div className="form-row">
           <div id="taskStateSelect" className="w-100 me-sm-2 mb-3">
             <h4 className="text-success">Assigned To</h4>
-            <p className="text-dark text-center">{Assigned}</p>
+            <p className="text-dark text-center">{Data?.assigned}</p>
           </div>
           <div id="taskCategorySelect" className="w-100 mb-3">
             <h4 className="text-success">Category</h4>

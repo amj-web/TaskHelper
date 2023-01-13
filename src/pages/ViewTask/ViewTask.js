@@ -11,7 +11,7 @@ const ViewTask = (singleData, catagoryOwner, userOwner) => {
     <div className="w-100 px-3 py-4">
       <div className="view-task-container w-100 py-4 pb-2 mx-auto">
         <h1 className="text-success text-center  add-task-heading">
-          Your Task Here!
+          Your Task
         </h1>
         <ViewTaskCom
           buttonName="SAVE"

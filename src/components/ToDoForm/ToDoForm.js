@@ -6,6 +6,7 @@ import { URL } from "../../globalUrl";
 import { toast, ToastContainer } from "react-toastify";
 import Loader from "../Loader/Loader";
 import { useHistory } from 'react-router-dom'
+var assignees=""
 const ToDoForm = ({ buttonName, setDisplayy,
   setUDisplayy }) => {
   const userData = JSON.parse(localStorage.getItem('user'))
@@ -21,7 +22,11 @@ const ToDoForm = ({ buttonName, setDisplayy,
   const [priority, setPriority] = useState()
   const [status, setStatus] = useState()
   const [loader, setLoader] = useState(false)
-  const currentURL = window.location.href.split('/')[3]
+  const [assignedTo, setassignedTo] = useState([])
+  // const [assignees, setassignees] = useState("")
+  // var assignees = ""
+  // var assignedTo=[]
+  
   const today = new Date();
   const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   useEffect(() => {
@@ -72,6 +77,25 @@ const ToDoForm = ({ buttonName, setDisplayy,
   }, [])
 
   const handleSubmitBtn = () => {
+    
+
+    // if(assignedTo.length!=0){
+      // console.log("In the Condition")
+      assignedTo.map((ls,index)=>{
+        if(index==0){
+          assignees=ls
+        }
+        else{
+          var can = `,${ls}`
+          assignees += can
+        }
+      })
+    // }
+    // console.log("The Assigned",assignees)
+  
+    
+ 
+   
     // console.log("Here is Data",
     //   {
     //     Title: title,
@@ -119,6 +143,10 @@ const ToDoForm = ({ buttonName, setDisplayy,
     if (priority!==undefined) {
       formdata.append("priority", priority);
     }
+    if(assignees!==null){
+      // console.log("Here is Assignees",assignees)
+      formdata.append("assigned", assignees);
+    }
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -140,7 +168,7 @@ const ToDoForm = ({ buttonName, setDisplayy,
           toast.success("Task Add Successfully!", { position: "bottom-right" })
           setTimeout(() => {
             history.push('/')
-          }, 1000)
+          }, 800)
         }
 
       })
@@ -151,6 +179,12 @@ const ToDoForm = ({ buttonName, setDisplayy,
       setUDisplayy(d);
     }
   };
+  const handleChange=(e)=>{
+    console.log("Change is occur",e)
+    assignedTo.push(e[e.length-1].cat)
+    console.log(assignedTo)
+  }
+
   return (
     <>
       {
@@ -199,6 +233,7 @@ const ToDoForm = ({ buttonName, setDisplayy,
                   displayValue="cat"
                   className="bg-light text-dark multi-select-box"
                   closeIcon={"cancel"}
+                  onSelect={handleChange}
                 />
               </Form.Group>
               <Form.Group controlId="taskCategorySelect" className="w-100 mb-3">

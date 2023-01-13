@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 const SortByContainer = ({data, setFilterToggle, setfilterData,setData}) => {
 
   const handleASorting = (e) => {
-    if (e.target.value == "Ascending") {
+    if (e.target.value === "Ascending") {
       // console.log("The Data in Ascend",data)
       data.sort((a, b) => {
         const dateA = new Date(a.dueDate);
@@ -19,7 +19,7 @@ const SortByContainer = ({data, setFilterToggle, setfilterData,setData}) => {
     }
   }
   const handleSorting = (e) => {
-    if (e.target.value == "Ascending") {
+    if (e.target.value === "Ascending") {
       // console.log("The Data in Ascend",data)
       data.sort((a, b) => {
         const dateA = new Date(a.dueDate);

@@ -5,17 +5,12 @@ import UpdateTask from "../UpdateTask/UpdateTask";
 const Modal = ({
   displayy,
   setDisplayy,
-  vDisplayy,
-  setVDisplayy,
   uDisplayy,
   setUDisplayy,
-  singleData,
   updateTaskId,
-  catagoryOwner,
-  userOwner
 }) => {
   return (
-    <div className="modal" id="" style={{ zIndex: 100, display: displayy }}>
+    <div className="modal"  style={{ zIndex: 100, display: displayy }}>
       {/* <ViewTask
         setDisplayy={setDisplayy}
         vDisplayy={vDisplayy}

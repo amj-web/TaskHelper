@@ -9,7 +9,7 @@ const Task = ({ setDisplayy,
   setVDisplayy,userOwner,
   setUDisplayy, Data, setSingleData, setcatagory, setLoader, handleFilter, setUpdateTaskId, setcatagoryOwner, catagoryOwner ,setuserOwner}) => {
   const userData = JSON.parse(localStorage.getItem('user'))
-  console.log("Here is User Data", Data)
+  // console.log("Here is User Data", Data)
   const history = useHistory();
   useEffect(() => {
 
@@ -126,7 +126,7 @@ const Task = ({ setDisplayy,
       <div className="task-container col-12 col-md-6 my-2 py-0 px-3">
         <div className="task-data p-3 ">
           <div className="task-img">
-          <img src={Data?.image} className="w-100 h-100" />
+          <img src={Data?.image} alt="image" className="w-100 h-100" />
         </div>
           <div className="task-title mt-3">
             <h5 className="m-0 fw-bold text-success">Title:</h5>

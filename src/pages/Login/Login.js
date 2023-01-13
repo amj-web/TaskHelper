@@ -38,7 +38,7 @@ const Login = ({setIsLogin}) => {
       .then(response => response.json())
       .then(result => {
         // console.log(result)
-        if (result.message != undefined) {
+        if (result.message !== undefined) {
           toast.error(result.message,{ position: "bottom-right" })
           setLoader(false)
         }

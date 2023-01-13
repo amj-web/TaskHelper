@@ -16,7 +16,7 @@ const Category = () => {
 
   const history = useHistory()
   useEffect(() => {
-    if (userData != null) {
+    if (userData !== null) {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -30,7 +30,7 @@ const Category = () => {
         .then(response => response.json())
         .then(result => {
           // console.log(result)
-          if (result.detail != undefined) {
+          if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             // setTimeout(() => {
             history.push('/login')
@@ -57,7 +57,7 @@ const Category = () => {
         history.push('/login')
       }, 1000)
     }
-    if (userData != null) {
+    if (userData !== null) {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -71,9 +71,9 @@ const Category = () => {
         .then(response => response.json())
         .then(result => {
           // console.log(result)
-          if(result.message!=undefined){
+          if(result.message!==undefined){
           
-            if (result.message == "User dont have any category") {
+            if (result.message === "User dont have any category") {
               setCategoriesList([])
             }
           }
@@ -88,7 +88,7 @@ const Category = () => {
 
   }, [])
   useEffect(() => {
-    if (userData != null) {
+    if (userData !== null) {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -102,7 +102,7 @@ const Category = () => {
         .then(response => response.json())
         .then(result => {
           // console.log(result)
-          if(result.message!=undefined){
+          if(result.message!==undefined){
           
             if (result.message == "User dont have any category") {
               setCategoriesList([])
@@ -147,7 +147,7 @@ const Category = () => {
       .then(response => response.json())
       .then(result => {
         if (typeof (result.name) == "object" || typeof (result.user) == "object") {
-          if (result.user != undefined) {
+          if (result.user !== undefined) {
             toast.error(result.user[0], { position: "bottom-right" })
           }
           else {
@@ -175,7 +175,7 @@ const Category = () => {
     // console.log("The Deleted Catagory", event)
     setCategoriesList(
       CategoriesList.filter(ls => {
-        return ls.id != event.id
+        return ls.id !== event.id
       })
     )
     var myHeaders = new Headers();
@@ -245,7 +245,7 @@ const Category = () => {
             </div>
             <div className="categories-list-container w-100 my-4 mx-auto d-flex justify-content-center flex-column">
               {
-                (CategoriesList.length != 0) ?
+                (CategoriesList.length !== 0) ?
                   CategoriesList?.map((category,index) => (
                     <CategoryList
                       key={index}

@@ -29,7 +29,7 @@ const Signup = () => {
       setLoader(false)
       return
     }
-    if(password!=confirmPassword){
+    if(password!==confirmPassword){
       setLoader(false)
       toast.error("Password and Confirm Passowrd are not matched!",{position:"bottom-right"})
       return
@@ -55,7 +55,7 @@ const Signup = () => {
       .then(response => response.json())
       .then(result => {
         if(typeof(result.username)=="object" || typeof(result.email)=="object"){
-          if(result.username!=undefined){
+          if(result.username!==undefined){
             toast.error(result.username[0],{position:"bottom-right"})
           }
           else{

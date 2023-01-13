@@ -12,7 +12,7 @@ const Todo = () => {
   // console.log("The User Data is", userData)
   const history = useHistory()
   useEffect(() => {
-    if (userData != null) {
+    if (userData !== null) {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -26,7 +26,7 @@ const Todo = () => {
         .then(response => response.json())
         .then(result => {
           // console.log(result)
-          if (result.detail != undefined) {
+          if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
               history.push('/login')
