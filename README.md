@@ -8,9 +8,9 @@ Our productivity app is built using a variety of technologies, including:
 - HTML, CSS, and JavaScript for the frontend
 - React.js for building the user interface and managing the application's state
 - Django REST framework for building the backend API
-- MySQL as the primary database management system
-- ElephantSQL as a PostgreSQL as a service
+- ElephantSQL as the primary database management system
 - Cloudinary for image and file storage
+- JWT to securly share information
 - Heroku for deployment
 
 The live link can be found [here](https://task-helper.herokuapp.com/). 
@@ -134,11 +134,74 @@ I wanted to create a design that is both visually pleasing and functional, that 
 
 ### Features Left to Implement
 
-- Another feature idea
+- A calander view to see tasks in days, weeks, months
+- notifications of uncoming tasks
 
 ## Testing
 
 ## Manual Tests
+### Login Form Submission
+
+| Test | Method | Expected Outcome | Result |
+| ---- | ------ | ---------------- | ------ |
+| Login Form | Submit empty form | Form doesn't submit, and displays error message| Pass |
+| Login Form | Enter invalid Username | Form doesn't submit, and displays error message | Pass |
+| Login Form | Enter User login credentials | Form doesn't submit, and displays error message | Pass | 
+| Submit link | Click on link | User is redirected to category page | Pass | 
+
+ ### Registration Form Submission (Register Page)
+
+| Test | Method | Expected Outcome | Result |
+| - | - | - | - |
+| Registration Form | Try to submit empty form | Form doesn't submit, and displays error message | Pass |
+| Registration Form | Try to submit a form where a username already exists | Form doesn't submit, and displays error message | Pass |
+| Email input | Try to enter an invalid email address or random numbers, words etc. | Form doesn't submit, and displays error message | Pass |
+| Login link | Click on link | User is redirected to Login Page | Pass |
+| Registration Form | Create a new user | Success message displays as user is redirected to Login Page | Pass |
+
+### Update Task
+
+| Test | Method | Expected Outcome | Result |
+| ---- | ------ | ---------------- | ------ |
+| Attempt to submit form without changing anything | Submit form without making any changes | Form doesn't submit, and displays error message | Fail |
+| Cancling the update | click on link| Takes user back to Task page | Pass |
+
+### Deleting Tasks
+
+| Test | Method | Expected Outcome | Result |
+| ---- | ------ | ---------------- | ------ |
+| Delete Task| Click on button | Warning alert asking is user is sure | Pass |
+| Delete Successful Message | click yes on delete a task | Task successfully delted alert | Pass |
+| Cancel Delete  | Click no on alert | Alert removed and nothing happens | Pass |
+
+### Creating New Tasks
+
+| Test | Method | Expected Outcome | Result |
+| ---- | ------ | ---------------- | ------ |
+| Title | Try to submit empty form | Form doesn't submit, and displays error message | Pass |
+| Description | Try to submit empty form | Form doesn't submit, and displays error message  | Pass |
+| Files  | Try to submit empty form | Form doesn't submit, and displays error message  | Pass |
+| Date  | Try to submit empty form | Form doesn't submit, and displays error message  | Pass |
+| Owners | Try to submit empty form | Form doesn't submit, and displays error message  | Pass |
+| Priority | Try to submit empty form | Form doesn't submit, and displays error message  | Pass |
+| State | Try to submit empty form | Form doesn't submit, and displays error message  | Pass | Click no on alert | Form doesn't submit, and displays error message  | Pass |
+| Category | Try to submit empty form | Form doesn't submit, and displays error message  | Pass |
+
+### Creating New Category
+
+| Test | Method | Expected Outcome | Result |
+| ---- | ------ | ---------------- | ------ |
+| Category | Try to submit empty form | Form doesn't submit, and displays error message | Pass |
+| Edit| Save changes | state changes and success alert  | Pass |
+| Delte  | delete state | category deleted and success alert  | Pass |
+
+### Filtering Tasks
+| Test | Method | Expected Outcome | Result |
+| ---- | ------ | ---------------- | ------ |
+| Filter by Catergory | Use drop down | Filter by catergory | Pass |
+| Filter by Priority | Use drop down  | Filter by priority  | Pass |
+| Filter by Status | Use drop down  | Filter by status | Pass |
+
 
 ## HTML Validation:
 - HTML Validation by W3C was used to check my HTML code: [W3C Markup Validation Link](https://validator.w3.org/)
@@ -158,33 +221,37 @@ I wanted to create a design that is both visually pleasing and functional, that 
 ## Python Validation:
 - I relied on Linter for my Python Validation
 
+## React
+- I relied on eslint for my React Validation
 
 
 ---
 ## Lighthouse Performance Testing:
 - Results of the Lighthouse Performance testing below:
+- The performance is very low. I have been told this is due to smelly components. Something I will need to work on in the future. 
 
-![Lighthouse Performance Test](/static/images/readme-images/validation/lighthouse-performance.png)
+![Lighthouse Performance Test](src/assets/images/screenshots/Lighthouse.png)
 
 
 ## Responsiveness:
-- The site has been tested at various screen sizes a demonstration of which can be found [here]
+- The site has been tested at various screen sizes a demonstration of which can be found [here](http://www.responsinator.com/?url=https%3A%2F%2Ftask-helper.herokuapp.com%2F)
 
 ---
 
 ## Current Issues known but not yet resolved:
-
-
+Making sure that I met my deadline there are a number of thing I will look to improve on in the future. I'm sure there are many more that I have not noticed. 
+Some of the ones I have are: 
+- Site loads to categories and not homepage
+- User can only upload pictures
+- The View Task page looks a bit naff
+- The user can update the task without changing anything
 
 ---
 
-## Bugs and Issues
-
 ## Personal Credits
 
-- 
--
--
+- Danny Callaghan. My tutor and mentor, such an amazing teacher  with so much experience. I wish I had met him sooner. 
+- The Code Insitute tutors as also their patience and knowledge knows no end.
 
 ## Final Thoughts
 
