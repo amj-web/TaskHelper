@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink as Link } from "react-router-dom";
 import "./Navbar.css";
 import todoSvg from "../../svg/todo.svg";
@@ -10,8 +10,7 @@ const Navbar = ({isLogin,setIsLogin}) => {
     initNavbar();
   }, [])
 
-
-
+  // Function that initializes the navbar. It adds event listeners to the navbar icon, mobile nav and logo.
   const initNavbar = () => {
     const navbarIconDiv = document.getElementById("navbar-icon-div");
 
@@ -20,6 +19,7 @@ const Navbar = ({isLogin,setIsLogin}) => {
 
     const logo = document.getElementById('_logo');
 
+    // function that toggle the class "active-Icon" and "active-mobile-nav" on navbarIcon and mobileNav
     const toggleNav = () => {
       navbarIcon.classList.toggle("active-Icon");
       mobileNav.classList.toggle("active-mobile-nav");
@@ -34,10 +34,10 @@ const Navbar = ({isLogin,setIsLogin}) => {
     });
 
   };
+  // function that set isLogin to false and remove user from local storage
   const handleLogOut = () => {
     setIsLogin(false)
     localStorage.removeItem("user");
-    // window.location.reload(false)
   }
 
 
@@ -83,16 +83,16 @@ const Navbar = ({isLogin,setIsLogin}) => {
                     Logout
                   </Link>
               }
-
-              {/* <Link to="/logout" className={"nav-btn d-none d-md-block"}>LogOut</Link> */}
             </div>
 
+            {/* div that contains the navbar icon */}
             <div id="navbar-icon-div" className="navbar-icon-div">
               <div id="navbar-icon" className="navbar-icon"></div>
             </div>
           </nav>
         </div>
       </div>
+      {/* import mobile nav component */}
       <MobileNav />
     </>
   );

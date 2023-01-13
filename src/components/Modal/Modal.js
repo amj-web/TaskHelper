@@ -1,32 +1,24 @@
 import React from "react";
 import UpdateTask from "../UpdateTask/UpdateTask";
-// import ViewTask from "../ViewTask/ViewTask";
 
 const Modal = ({
-  displayy,
-  setDisplayy,
-  uDisplayy,
-  setUDisplayy,
-  updateTaskId,
+displayy,
+setDisplayy,
+uDisplayy,
+setUDisplayy,
+updateTaskId,
 }) => {
-  return (
-    <div className="modal"  style={{ zIndex: 100, display: displayy }}>
-      {/* <ViewTask
-        setDisplayy={setDisplayy}
-        vDisplayy={vDisplayy}
-        setVDisplayy={setVDisplayy}
-        singleData = {singleData}
-        catagoryOwner={catagoryOwner}
-        userOwner={userOwner}
-      /> */}
-      <UpdateTask
-        setDisplayy={setDisplayy}
-        uDisplayy={uDisplayy}
-        setUDisplayy={setUDisplayy}
-        updateTaskId={updateTaskId}
-      />
-    </div>
-  );
+return (
+<div className="modal" style={{ zIndex: 100, display: displayy }}>
+{/* Conditionally render the update task component, when the 'update' modal is open */}
+<UpdateTask
+     setDisplayy={setDisplayy}
+     uDisplayy={uDisplayy}
+     setUDisplayy={setUDisplayy}
+     updateTaskId={updateTaskId}
+   />
+</div>
+);
 };
 
 export default Modal;

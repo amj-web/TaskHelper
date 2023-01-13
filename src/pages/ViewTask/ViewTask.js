@@ -3,7 +3,9 @@ import "./ViewTask.css";
 import ViewTaskCom from "../../components/ViewTask/ViewTaskCom";
 import { useLocation } from "react-router-dom";
 const ViewTask = (singleData, catagoryOwner, userOwner) => {
+  // useLocation hook from react-router-dom is used to get the current location's state
   const location = useLocation()
+  // Destructuring the location state to get the task data, category and assigned user
   var Data = location.state[0].Data
   var catagory =location.state[0].catagoryOwner
   var Assigned = location.state[0].userOwner
@@ -16,10 +18,8 @@ const ViewTask = (singleData, catagoryOwner, userOwner) => {
         <ViewTaskCom
           buttonName="SAVE"
           Data={Data}
-        //   singleData={singleData}
           Assigned={Assigned}
           catagory={catagory}
-        //   userOwner={userOwner}
         />
       </div>
     </div>

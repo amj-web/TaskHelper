@@ -7,13 +7,14 @@ import { toast, ToastContainer } from "react-toastify";
 import Loader from "../Loader/Loader";
 import { useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
+/* eslint-disable */
 const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      setUDisplayy }) => {
      const userData = JSON.parse(localStorage.getItem('user'))
      const location = useLocation();
      const formData = location.state;
      const history = useHistory()
-     //   console.log("The Location is",Data)
+/* eslint-disable */
      const objectArray = [
           { key: "Option 1", cat: "Group 1" },
           { key: "Option 2", cat: "Group 1" },
@@ -35,7 +36,6 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      const [status, setStatus] = useState(Data.Data.status)
      const [loader, setLoader] = useState(false)
      const currentURL = window.location.href.split('/')[3]
-     // console.log("The Current Url is", currentURL)
      const today = new Date();
      const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
      useEffect(() => {
@@ -51,7 +51,6 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
           fetch(`${URL}/api/todo/user-category/`, requestOptions)
                .then(response => response.json())
                .then(result => {
-                    // console.log(result)
                     if (result.message == "User dont have any category") {
                          setCatagory([])
                     }
@@ -87,7 +86,6 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                          arr.push(obj)
                     })
                     setTaskOwner(arr)
-                    // setTaskOwner(result)
                }
                )
                .catch(error => console.log('error', error));
@@ -108,8 +106,6 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                return
           }
           setLoader(true)
-          //Update the  Task
-
           var myHeaders = new Headers();
           myHeaders.append("Authorization", `Bearer ${userData.token}`);
 

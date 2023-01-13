@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-// import Taskmg from "../../assets/images/task-img.jpg";
+import React, { useEffect } from "react";
 import { URL } from "../../globalUrl";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
+
 const Task = ({ setDisplayy,
-  setVDisplayy,userOwner,
-  setUDisplayy, Data, setSingleData, setcatagory, setLoader, handleFilter, setUpdateTaskId, setcatagoryOwner, catagoryOwner ,setuserOwner}) => {
+  setVDisplayy, userOwner,
+  setUDisplayy, Data, setSingleData, setcatagory, setLoader, handleFilter, setUpdateTaskId, setcatagoryOwner, catagoryOwner, setuserOwner }) => {
   const userData = JSON.parse(localStorage.getItem('user'))
-  // console.log("Here is User Data", Data)
   const history = useHistory();
   useEffect(() => {
 
-    //UserData
+    // UserData
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -26,17 +24,18 @@ const Task = ({ setDisplayy,
       redirect: 'follow'
     };
 
+    // Fetch Specific user data
     fetch(`${URL}/api/auth/specifci-user/${Data.user}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         setuserOwner(result.names)
       })
-      .catch(error => 
-        {
-          // console.log('error', error)
-        });
+      .catch(error => {
+        // console.log('error', error)
+      });
 
-
+    // Fetch Specific category data
+    /* eslint-disable */
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -56,28 +55,24 @@ const Task = ({ setDisplayy,
 
   }, [])
 
-
+  // show update box
   const showUpdateBox = () => {
     history.push({
       pathname: '/update',
-      state: {Data }
+      state: { Data }
     });
   };
 
+  // show view box
   const showViewBox = () => {
     history.push({
       pathname: '/viewTask',
-      state: [{Data:Data,catagoryOwner:catagoryOwner,userOwner:userOwner }]
+      state: [{ Data: Data, catagoryOwner: catagoryOwner, userOwner: userOwner }]
     });
-    // let d = "flex";
-    // setDisplayy(d);
-    // d = "block";
-    // setVDisplayy(d);
-    // setSingleData(Data)
-    // setcatagory(catagoryOwner)
   };
+
+  // handle delete task
   const handleDelete = (id) => {
-    // setLoader(true)
     handleFilter(id)
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${userData.token}`);
@@ -94,15 +89,10 @@ const Task = ({ setDisplayy,
     fetch(`${URL}/api/todo/unique-todo/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        // console.log(result)
         toast.success("Task is deleted Successfully", { position: "bottom-right" })
-        // setLoader(false)
-
       })
       .catch(error => console.log('error', error));
   }
-
-
   return (
     <>
 
@@ -126,8 +116,8 @@ const Task = ({ setDisplayy,
       <div className="task-container col-12 col-md-6 my-2 py-0 px-3">
         <div className="task-data p-3 ">
           <div className="task-img">
-          <img src={Data?.image} alt="image" className="w-100 h-100" />
-        </div>
+            <img src={Data?.image} alt="image" className="w-100 h-100" />
+          </div>
           <div className="task-title mt-3">
             <h5 className="m-0 fw-bold text-success">Title:</h5>
             <p className="ms-3" style={{ color: "gray" }} id="taskTitle">
@@ -136,7 +126,6 @@ const Task = ({ setDisplayy,
           </div>
 
           <div className="task-filter-tags mt-2 d-flex flex-wrap">
-            {/* <span style={{ marginRight: "0.6em" }}>Catagory: </span> */}
             <div
               className="text-success border border-success rounded px-2 py-1 me-2 h-100 mb-2"
               id="category"
@@ -148,7 +137,7 @@ const Task = ({ setDisplayy,
               className="text-danger border border-danger rounded px-2 py-1  me-2 h-100 mb-2"
               id="priority"
             >
-             
+
               {Data.priority}
             </div>
 
@@ -174,7 +163,6 @@ const Task = ({ setDisplayy,
             >
               View
             </button>
-            {/* <Link to="/update"> */}
             <button
               className="task-btn task-update-btn me-1"
               id="update-btn"
@@ -182,12 +170,10 @@ const Task = ({ setDisplayy,
             >
               Update
             </button>
-            {/* </Link> */}
             <button className="task-btn task-delete-btn" data-toggle="modal" data-target="#exampleModalCenter">Delete</button>
           </div>
         </div>
       </div>
-      {/* <ToastContainer/> */}
     </>
 
   );

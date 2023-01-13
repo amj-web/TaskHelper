@@ -1,15 +1,12 @@
 import React,{useEffect,useState} from "react";
-import ToDoForm from "../ToDoForm/ToDoForm";
 import UpdateForm from "../ToDoForm/UpdateForm";
-
+/* eslint-disable */
 const UpdateTask = ({ displayy, setDisplayy, uDisplayy, setUDisplayy,updateTaskId }) => {
   const [Data, setData] = useState()
-  // console.log("The Update Task Id is here",updateTaskId)
   useEffect(() => {
    setData(updateTaskId)
   }, [])
 
-  // console.log("The Updated Data is here",Data)
   
   return (
     <div className="todo-update-page w-100 px-3" style={{ display: uDisplayy }}>

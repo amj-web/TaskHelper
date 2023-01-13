@@ -9,7 +9,6 @@ import Loader from "../../components/Loader/Loader";
 const Todo = () => {
   const userData = JSON.parse(localStorage.getItem('user'))
   const [loader, setLoader] = useState(true)
-  // console.log("The User Data is", userData)
   const history = useHistory()
   useEffect(() => {
     if (userData !== null) {
@@ -25,7 +24,6 @@ const Todo = () => {
       fetch(`${URL}/api/auth/check/`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          // console.log(result)
           if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
@@ -36,6 +34,7 @@ const Todo = () => {
               setLoader(false)      
           }
         })
+        /* eslint-disable */
         .catch(error => {
           console.log('error', error)
           toast.error("Please login first", { position: "bottom-right" })

@@ -9,7 +9,8 @@ import { useHistory } from 'react-router-dom'
 var assignees=""
 const ToDoForm = ({ buttonName, setDisplayy,
   setUDisplayy }) => {
-  const userData = JSON.parse(localStorage.getItem('user'))
+/* eslint-disable */
+    const userData = JSON.parse(localStorage.getItem('user'))
   const history = useHistory()
   const [title, setTitle] = useState()
   const [description, setDescription] = useState()

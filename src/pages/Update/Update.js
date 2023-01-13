@@ -9,12 +9,18 @@ import UpdateForm from "../../components/ToDoForm/UpdateForm";
 import { useLocation } from 'react-router-dom';
 
 const Update = () => {
+  // Retrieving the user data from local storage
   const userData = JSON.parse(localStorage.getItem('user'))
+  // useState hook for managing the loading state
   const [loader, setLoader] = useState(true)
+  // useLocation hook from react-router-dom to get the current location
   const location = useLocation();
+  // useHistory hook from react-router-dom to manipulate the browser history
   const history = useHistory()
+  // useEffect hook to check if the user is logged in and authorized
   useEffect(() => {
     if (userData != null) {
+      // Creating headers for the request
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${userData.token}`);
 
@@ -23,36 +29,38 @@ const Update = () => {
         headers: myHeaders,
         redirect: 'follow'
       };
-
+      // Fetching the data from the API
       fetch(`${URL}/api/auth/check/`, requestOptions)
         .then(response => response.json())
         .then(result => {
           if (result.detail !== undefined) {
+            // Error message if the user is not logged in or unauthorized
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
-              history.push('/login')
+              history.push('/login') // redirect to login page
             }, 500)
           }
           else {
-              setLoader(false)      
+              setLoader(false) // setting the loader state to false if the user is logged in and authorized      
           }
         })
         .catch(error => {
+          // eslint-disable-next-line
           console.log('error', error)
           toast.error("Please login first", { position: "bottom-right" })
           setTimeout(() => {
-            history.push('/login')
+            history.push('/login') // redirect to login page
           }, 500)
         });
     }
     else {
+      // Error message if the user is not logged in or unauthorized
       toast.error("Please login first!", { position: "bottom-right" })
       setTimeout(() => {
-        history.push('/login')
+        history.push('/login') // redirect to login page
       }, 500)
     }
   })
-
 
   return (
     <>

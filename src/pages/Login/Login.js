@@ -6,15 +6,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import { URL } from "../../globalUrl";
 import { useHistory } from 'react-router-dom'
 import Loader from "../../components/Loader/Loader";
+
 const Login = ({setIsLogin}) => {
-  const [userName, setUserName] = useState()
-  const [password, setPassword] = useState()
-  const [loader, setLoader] = useState(false)
+ // Use state hook to store the entered username
+ const [userName, setUserName] = useState('')
+ // Use state hook to store the entered password
+ const [password, setPassword] = useState('')
+ // Use state hook to store the loader status
+ const [loader, setLoader] = useState(false)
+ // Use the useHistory hook to redirect the user
   const history = useHistory()
+  // Function to handle the login form submission
   const handleLogin = (e) => {
     e.preventDefault()
     setLoader(true)
     if (!userName || !password) {
+       // If the username or password field is empty, show an error message
       toast.error("Please fill all the fields!", { position: "bottom-right" })
       setLoader(false)
       return
@@ -43,6 +50,7 @@ const Login = ({setIsLogin}) => {
           setLoader(false)
         }
         else {
+          // If the login is successful, redirect the user to the categories page
           setTimeout(() => {
             history.push('/categories')
           }, 1000)
@@ -53,11 +61,9 @@ const Login = ({setIsLogin}) => {
             setIsLogin(true)
           }, 1000)
           
-          // setLoader(false)
         }
       })
       .catch(error => {
-        // console.log('error', error)
         toast.error(error, { position: "bottom-right" })
       });
   }

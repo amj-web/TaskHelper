@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { URL } from "../../globalUrl";
 import { useHistory } from 'react-router-dom'
 import Loader from "../../components/Loader/Loader";
-
+/* eslint-disable */
 const Signup = () => {
 
   const [name, setName] = useState()
@@ -17,7 +17,6 @@ const Signup = () => {
   const history = useHistory()
   const handleSignup = (e) => {
     setLoader(true)
-    // console.log("The passowrd is",password.length)
     e.preventDefault()
     if(!name || !email || !password || !confirmPassword ){
       setLoader(false)
