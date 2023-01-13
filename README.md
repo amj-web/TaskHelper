@@ -1,71 +1,170 @@
-# Getting Started with Create React App
+# Time Keeper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Time Keeper is a productivity app designed to help the user get organized by allowing them create tasks and ToDo lists. 
 
-## Available Scripts
+## Technologies Used
+* The Front End of the application is built using HTML, CSS, JavaScript, React.js and Bootstrap.js
+* The Back End is handled with Django REST Framework and ElephantSQL 
+* It has been deployed to Heroku. Here is a [link](https://.herokuapp.com/). 
 
-In the project directory, you can run:
+![Responsice Mockup](https://github.com/lucyrush/readme-template/blob/master/media/love_running_mockup.png)
 
-### `yarn start`
+## User Stories
+**First-Time Visitor Goals - As a first-time user, who has not created an account, I want to be able to:**
+* Understand what the purpose of the application is and how to use it.  
+* Create an account. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Registered User Goals - As a registered user I want to be able to:**
+* Create, Edit and Delete my own tasks
+* Set a due date for a task
+* Attach a file to a task
+* Assign/unassign multiple owners
+* Set a priority for a task
+* Set a category for a task
+* Filter tasks based on category and priority 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Site Admin Goals - As an administrator, I want to be able to:**
+* Create, Edit and delete my own and users tasks
+* Manage and authenticate user's tasks
 
-### `yarn test`
+## Features 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
-### `yarn build`
+### Existing Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- __Navigation Bar__
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Featured on all three pages, the full responsive navigation bar includes links to the Logo, Home page, Gallery and Sign Up page and is identical in each page to allow for easy navigation.
+  - This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Nav Bar](https://github.com/lucyrush/readme-template/blob/master/media/love_running_nav.png)
 
-### `yarn eject`
+- __The landing page image__
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - The landing includes a photograph with text overlay to allow the user to see exactly which location this site would be applicable to. 
+  - This section introduces the user to Love Running with an eye catching animation to grab their attention
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Landing Page](https://github.com/lucyrush/readme-template/blob/master/media/love_running_landing.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- __Club Ethos Section__
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  - The club ethos section will allow the user to see the benefits of joining the Love Running meetups, as well as the benefits of running overall. 
+  - This user will see the value of signing up for the Love Running meetups. This should encourage the user to consider running as their form of exercise. 
 
-## Learn More
+![Club Ethos](https://github.com/lucyrush/readme-template/blob/master/media/love_running_ethos.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- __Meetup Times section__
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - This section will allow the user to see exactly when the meetups will happen, where they will be located and how long the run will be in kilometers. 
+  - This section will be updated as these times change to keep the user up to date. 
 
-### Code Splitting
+![Meetup Times](https://github.com/lucyrush/readme-template/blob/master/media/love_running_times.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- __The Footer__ 
 
-### Analyzing the Bundle Size
+  - The footer section includes links to the relevant social media sites for Love Running. The links will open to a new tab to allow easy navigation for the user. 
+  - The footer is valuable to the user as it encourages them to keep connected via social media
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Footer](https://github.com/lucyrush/readme-template/blob/master/media/love_running_footer.png)
 
-### Making a Progressive Web App
+- __Gallery__
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - The gallery will provide the user with supporting images to see what the meet ups look like. 
+  - This section is valuable to the user as they will be able to easily identify the types of events the organisation puts together. 
 
-### Advanced Configuration
+![Gallery](https://github.com/lucyrush/readme-template/blob/master/media/love_running_gallery.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- __The Sign Up Page__
 
-### Deployment
+  - This page will allow the user to get signed up to Love Running to start their running journey with the community. The user will be able specify if they would like to take part in road, trail or both types of running. The user will be asked to submit their full name and email address. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Sign Up](https://github.com/lucyrush/readme-template/blob/master/media/love_running_signup.png)
 
-### `yarn build` fails to minify
+For some/all of your features, you may choose to reference the specific project files that implement them.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Todo_Frontend
+In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+
+### Features Left to Implement
+
+- Another feature idea
+
+## Design
+
+I wanted the home page to be dark and atmospheric to try and replicate walking into a swanky cocktail bar. 
+In contrast the drinks page is light. I want the pictures of the cocktails to be the first thing that catches the users eye. I feel that it also encourages the user
+to take and/or post beautiful pictures of their own cocktails. 
+
+I chose to use Inter font from [Google Fonts](https://fonts.google.com/specimen/Inter) as it is easy to read while having a modern sleek look. 
+
+**Wireframes**
+
+* [Home Page](static/images/home-wf.png)
+* [Register Page](static/images/register-wf.png)
+* [Drinks Page](static/images/drinks-wf.png)
+* [Create New Post](static/images/create-new-wf.png)
+* [Edit Post](static/images/edit-wf.png)
+* [Mobile Home Page](static/images/home-phone-wf.png)
+* [Mobile Drinks Page](static/images/drinks-phone-wf.png)
+* [Mobile New Post](static/images/new-post-phone-wf.png)
+* [Mobile Register](static/images/register-phone-wf.png)
+* [Mobie Sign In](static/images/sign-in-phone-wf.png)
+
+## Testing 
+
+In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+
+In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+
+You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+
+If this section grows too long, you may want to split it off into a separate file and link to it from here.
+
+
+### Validator Testing 
+
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
+
+### Unfixed Bugs
+
+You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+
+## Credits 
+
+In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
+
+You can break the credits section up into Content and Media, depending on what you have included in your project. 
+
+### Content 
+
+- The text for the Home page was taken from Wikipedia Article A
+- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
+- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+
+### Media
+
+- The photos used on the home and sign up page are from This Open Source site
+- The images used for the gallery page were taken from this other open source site
+
+
+Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 
+
+## Other General Project Advice
+
+Below you will find a couple of extra tips that may be helpful when completing your project. Remember that each of these projects will become part of your final portfolio so it’s important to allow enough time to showcase your best work! 
+
+- One of the most basic elements of keeping a healthy commit history is with the commit message. When getting started with your project, read through [this article](https://chris.beams.io/posts/git-commit/) by Chris Beams on How to Write  a Git Commit Message 
+  - Make sure to keep the messages in the imperative mood 
+
+- When naming the files in your project directory, make sure to consider meaningful naming of files, point to specific names and sections of content.
+  - For example, instead of naming an image used ‘image1.png’ consider naming it ‘landing_page_img.png’. This will ensure that there are clear file paths kept. 
+
+- Do some extra research on good and bad coding practices, there are a handful of useful articles to read, consider reviewing the following list when getting started:
+  - [Writing Your Best Code](https://learn.shayhowe.com/html-css/writing-your-best-code/)
+  - [HTML & CSS Coding Best Practices](https://medium.com/@inceptiondj.info/html-css-coding-best-practice-fadb9870a00f)
+  - [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html#General)
+
+Getting started with your Portfolio Projects can be daunting, planning your project can make it a lot easier to tackle, take small steps to reach the final outcome and enjoy the process! 
