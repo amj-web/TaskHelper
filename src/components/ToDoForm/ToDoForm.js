@@ -195,7 +195,7 @@ const ToDoForm = ({ buttonName, setDisplayy,
               <Form.Label className="text-success">Title<span style={{ color: "red", marginLeft: "0.2em" }}>*</span></Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Develop a Todos list website."
+                placeholder="Give your task a title"
                 onChange={(e) => setTitle(e.target.value)}
               />
 
@@ -206,7 +206,7 @@ const ToDoForm = ({ buttonName, setDisplayy,
               <Form.Control
                 as="textarea"
                 rows={3}
-                placeholder="In thi website we can assign task to employees and ..."
+                placeholder="Give your task a description"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </Form.Group>
