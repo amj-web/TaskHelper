@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom'
 import "./Home.css";
 import { URL } from "../../globalUrl";
 const Home = () => {
+  /* eslint-disable */
   const userData = JSON.parse(localStorage.getItem('user'))
   let [displayy, setDisplayy] = useState("none");
   let [uDisplayy, setUDisplayy] = useState("none");
@@ -43,6 +44,7 @@ const Home = () => {
           if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
+              localStorage.removeItem("user");
               history.push('/login')
             }, 1000)
           }
@@ -56,6 +58,7 @@ const Home = () => {
           console.log('error', error)
           toast.error("Please login first", { position: "bottom-right" })
           setTimeout(() => {
+            localStorage.removeItem("user");
             history.push('/login')
           }, 1000)
         });
@@ -63,6 +66,7 @@ const Home = () => {
     else {
       toast.error("Please login first!", { position: "bottom-right" })
       setTimeout(() => {
+        localStorage.removeItem("user");
         history.push('/login')
       }, 1000)
     }
@@ -79,16 +83,9 @@ const Home = () => {
       fetch(`${URL}/api/todo/user-todo/?userID=${userData.id}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          // console.log("The Result--->", result)
-          // if(result.message="User dont have any todo"){
-          //   setData([])
-          //   setLoader(false)
-          // }else{
-          //   setData(result)
-          //   setLoader(false)
-          // }
+          
           if (result.message !== undefined) {
-            if (result.message == "User dont have any todo") {
+            if (result.message === "User dont have any todo") {
               setData([])
             }
           }
@@ -137,7 +134,7 @@ const Home = () => {
                 !filterToggle ?
                   <>
                     {
-                      data.length == 0 ? <center><h3>Hurray there are no tasks to be completed</h3></center>
+                      data.length === 0 ? <center><h3>Hurray there are no tasks to be completed</h3></center>
                         :
                         data?.map((ls,index) => (
                           <Task key={index}

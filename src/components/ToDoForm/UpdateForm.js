@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Loader from "../Loader/Loader";
 import { useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
+var assignees=""
 /* eslint-disable */
 const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      setUDisplayy }) => {
@@ -14,7 +15,7 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      const location = useLocation();
      const formData = location.state;
      const history = useHistory()
-/* eslint-disable */
+     /* eslint-disable */
      const objectArray = [
           { key: "Option 1", cat: "Group 1" },
           { key: "Option 2", cat: "Group 1" },
@@ -35,6 +36,7 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      const [priority, setPriority] = useState(Data.Data.priority)
      const [status, setStatus] = useState(Data.Data.status)
      const [loader, setLoader] = useState(false)
+     const [assignedTo, setassignedTo] = useState([])
      const currentURL = window.location.href.split('/')[3]
      const today = new Date();
      const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
@@ -92,7 +94,15 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
 
      }, [])
      const handleUpdateFunction = () => {
-
+          assignedTo.map((ls, index) => {
+               if (index == 0) {
+                    assignees = ls
+               }
+               else {
+                    var can = `,${ls}`
+                    assignees += can
+               }
+          })
           if (catagory.length == 0) {
                toast.error("Please add Catagory First!", { position: "bottom-right" })
                setTimeout(() => {
@@ -127,6 +137,10 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
           if (priority !== undefined) {
                formdata.append("priority", priority);
           }
+          if(assignees!==null){
+               // console.log("Here is Assignees",assignees)
+               formdata.append("assigned", assignees);
+             }
 
           var requestOptions = {
                method: 'PUT',
@@ -158,6 +172,11 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
      const handleCancel = () => {
           history.push("/")
      }
+     const handleChange=(e)=>{
+          console.log("Change is occur",e)
+          assignedTo.push(e[e.length-1].cat)
+          console.log(assignedTo)
+        }
      return (
           <>
                {
@@ -200,12 +219,13 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                                         controlId="taskStateSelect"
                                         className="w-100 me-sm-2 mb-3"
                                    >
-                                        <Form.Label className="text-success">Task Owners</Form.Label>
+                                        <Form.Label className="text-success">Task Owners  (Select Assignees if you want to update rather leave it empty)</Form.Label>
                                         <Multiselect
                                              options={taskOwner}
                                              displayValue="cat"
                                              className="bg-light text-dark multi-select-box"
                                              closeIcon={"cancel"}
+                                             onSelect={handleChange}
                                         />
                                    </Form.Group>
                                    <Form.Group controlId="taskCategorySelect" className="w-100 mb-3">
@@ -215,10 +235,10 @@ const UpdateForm = ({ buttonName, setDisplayy, updateTaskId, Data,
                                                   <option disabled selected>Select Catagory</option>
                                                   {
                                                        catagory?.map((ls, index) => (
-                                   
+
                                                             <option key={index} value={ls.id}>{ls.name}</option>
 
-                                                          
+
                                                        ))
                                                   }
                                              </>

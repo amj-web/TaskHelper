@@ -7,13 +7,13 @@ const ViewTaskCom = ({
 }) => {
 
   const imageRef = useRef(null);
+  // eslint-disable-next-line
   const [imageUrl, setImageUrl] = useState(Data?.image);
   function handleDownload() {
    
     saveAs(imageUrl)
   }
  
-  console.log("The Data is",Data)
   return (
     <div >
       <div className="m-4">
@@ -37,7 +37,8 @@ const ViewTaskCom = ({
               {/* </a> */}
 
             </h4>
-            <img src={Data?.image} ref={imageRef} width="100" height="100" />
+
+            <img src={Data?.image} alt="Task Helper" ref={imageRef} width="100" height="100" />
           </div>
 
           <div id="duedate" className="w-100 mb-3">

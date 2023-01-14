@@ -37,6 +37,7 @@ const Update = () => {
             // Error message if the user is not logged in or unauthorized
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
+              localStorage.removeItem("user");
               history.push('/login') // redirect to login page
             }, 500)
           }
@@ -49,6 +50,7 @@ const Update = () => {
           console.log('error', error)
           toast.error("Please login first", { position: "bottom-right" })
           setTimeout(() => {
+            localStorage.removeItem("user");
             history.push('/login') // redirect to login page
           }, 500)
         });
@@ -57,6 +59,7 @@ const Update = () => {
       // Error message if the user is not logged in or unauthorized
       toast.error("Please login first!", { position: "bottom-right" })
       setTimeout(() => {
+        localStorage.removeItem("user");
         history.push('/login') // redirect to login page
       }, 500)
     }

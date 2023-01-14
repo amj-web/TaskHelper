@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Category.css";
+/* eslint-disable */
 import AddCategory from "../../components/AddCategory/AddCategory";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { URL } from "../../globalUrl";
 import { useHistory } from 'react-router-dom'
 import Loader from "../../components/Loader/Loader";
-
 const Category = () => {
   const userData = JSON.parse(localStorage.getItem('user'))
   const [CategoriesList, setCategoriesList] = useState([]);
@@ -33,6 +33,7 @@ const Category = () => {
           if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             // setTimeout(() => {
+              localStorage.removeItem("user");
             history.push('/login')
             // }, 1000)
           }
@@ -46,6 +47,7 @@ const Category = () => {
           console.log('error', error)
           toast.error("Please login first", { position: "bottom-right" })
           // setTimeout(() => {
+          localStorage.removeItem("user");
           history.push('/login')
           // }, 1000)
         });
@@ -54,6 +56,7 @@ const Category = () => {
     else {
       toast.error("Please login first!", { position: "bottom-right" })
       setTimeout(() => {
+        localStorage.removeItem("user");
         history.push('/login')
       }, 1000)
     }

@@ -27,6 +27,7 @@ const Todo = () => {
           if (result.detail !== undefined) {
             toast.error("Please login first", { position: "bottom-right" })
             setTimeout(() => {
+              localStorage.removeItem("user");
               history.push('/login')
             }, 500)
           }
@@ -39,6 +40,7 @@ const Todo = () => {
           console.log('error', error)
           toast.error("Please login first", { position: "bottom-right" })
           setTimeout(() => {
+            localStorage.removeItem("user");
             history.push('/login')
           }, 500)
         });
@@ -46,6 +48,7 @@ const Todo = () => {
     else {
       toast.error("Please login first!", { position: "bottom-right" })
       setTimeout(() => {
+        localStorage.removeItem("user");
         history.push('/login')
       }, 500)
     }
