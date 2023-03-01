@@ -72,7 +72,7 @@ React is designed to make the development of user interfaces easier, faster and 
 React makes it easy to create highly interactive user experiences. It provides a declarative API which allows developers to focus on how the user interface should look and behave. It also provides a range of tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering. Additionally, React components are reusable, which makes it easy to create complex user interfaces with fewer lines of code.
 
 **Flow Chart for Reused Components**
-![FlowChart](path/to/resusedcomponents.png)
+![FlowChart](https://github.com/amj-web/TaskHelper/blob/master/resusedcomponents.png?raw=true)
 
 ### Existing Features
 
