@@ -18,6 +18,20 @@ The live link can be found [here](https://task-helper.herokuapp.com/).
 ## Website across different platforms
 ![Responsice Mockup](src/assets/images/screenshots/responsivemockup.png)
 
+## The advantages on React and Reused Components
+**Improving user experience using react.js**
+
+React is a JavaScript library for building user interfaces. It is designed to make the process of building user interfaces simpler and more efficient. React makes it easy to create highly interactive user experiences without having to write a lot of code. It provides a declarative API which allows developers to focus on how the user interface should look and behave.
+
+React is highly performant, and can be used to create complex user interfaces with little effort. React components being reusable, makes it easy to create complex user interfaces with fewer lines of code. It also provides a range of tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering.
+
+React is designed to make the development of user interfaces easier, faster and more efficient. It provides a declarative API which allows developers to focus on how the user interface should look and behave. It also provides tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering. React also provides an elegant way of creating components and managing their state, which allows developers to create complex user interfaces with fewer lines of code.
+
+React makes it easy to create highly interactive user experiences. It provides a declarative API which allows developers to focus on how the user interface should look and behave. It also provides a range of tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering. Additionally, React components are reusable, which makes it easy to create complex user interfaces with fewer lines of code.
+
+**Flow Chart for Reused Components**
+![FlowChart](https://github.com/amj-web/TaskHelper/blob/master/resusedcomponents.png?raw=true)
+
 
 ## User Stories
 
@@ -59,20 +73,6 @@ I wanted to create a design that is both visually pleasing and functional, that 
 * [Register](/src/assets/images/wireframes/Register.png)
 * [Create New Task](src/assets/images/wireframes/CreateANewTask.png)
 * [viewtask](src/assets/images/wireframes/viewtask.png)
-
-##The advantages on React and Reused Components
-**Improving user experience using react.js**
-
-React is a JavaScript library for building user interfaces. It is designed to make the process of building user interfaces simpler and more efficient. React makes it easy to create highly interactive user experiences without having to write a lot of code. It provides a declarative API which allows developers to focus on how the user interface should look and behave.
-
-React is highly performant, and can be used to create complex user interfaces with little effort. React components being reusable, makes it easy to create complex user interfaces with fewer lines of code. It also provides a range of tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering.
-
-React is designed to make the development of user interfaces easier, faster and more efficient. It provides a declarative API which allows developers to focus on how the user interface should look and behave. It also provides tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering. React also provides an elegant way of creating components and managing their state, which allows developers to create complex user interfaces with fewer lines of code.
-
-React makes it easy to create highly interactive user experiences. It provides a declarative API which allows developers to focus on how the user interface should look and behave. It also provides a range of tools and techniques to optimise the performance of user interfaces, such as code splitting and virtual DOM rendering. Additionally, React components are reusable, which makes it easy to create complex user interfaces with fewer lines of code.
-
-**Flow Chart for Reused Components**
-![FlowChart](https://github.com/amj-web/TaskHelper/blob/master/resusedcomponents.png?raw=true)
 
 ### Existing Features
 
