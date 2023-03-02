@@ -13,6 +13,8 @@ Our productivity app is built using a variety of technologies, including:
 - JWT to securly share information
 - Heroku for deployment
 
+### Deployment
+
 The Project has been deployed on Heroku, the live link can be found [here](https://task-helper.herokuapp.com/). 
 
 ## Website across different platforms
