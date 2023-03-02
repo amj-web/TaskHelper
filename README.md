@@ -13,7 +13,7 @@ Our productivity app is built using a variety of technologies, including:
 - JWT to securly share information
 - Heroku for deployment
 
-The live link can be found [here](https://task-helper.herokuapp.com/). 
+The Project has been deployed on Heroku, the live link can be found [here](https://task-helper.herokuapp.com/). 
 
 ## Website across different platforms
 ![Responsice Mockup](src/assets/images/screenshots/responsivemockup.png)
@@ -252,13 +252,14 @@ I wanted to create a design that is both visually pleasing and functional, that 
 
 ---
 
-## Current Issues known but not yet resolved:
+## Issue and Things That need improving:
 Making sure that I met my deadline there are a number of thing I will look to improve on in the future. I'm sure there are many more that I have not noticed. 
 Some of the ones I have are: 
 - Site loads to categories and not homepage
 - User can only upload pictures
 - The View Task page looks a bit naff
 - The user can update the task without changing anything
+- For my next project I need to be mindful to make use of the GitHub project board better. Use The MoSCoW method and use the milestones and epics. 
 
 ---
 
